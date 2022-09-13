@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="Styles/index.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+        integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+
+</head>
+</head>
+
+<body onload="loadInitialData()">
+    <div class="add__new__btn_only_mobile d-lg-none">
+        <button type="submit" class="btn btn-primary d-flex align-items-center gap-2 " data-bs-toggle="modal"
+            data-bs-target="#AddNewModal">
+            <i class="fas fa-plus"></i>Add New
+        </button>
+
+    </div>
+
+    <div class="modal fade" id="AddNewModal" tabindex="-1" aria-labelledby="AddNewModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="AddNewModalLabel">Add New Task</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form onsubmit="return false">
+                        <div class="mb-3">
+                            <label for="ImageUrl" class="form-label">Image URL</label>
+                            <input type="url" class="form-control" id="ImageUrl"
+                                placeholder="https://exmaple.com/image.png">
+                        </div>
+                        <div class="mb-3">
+                            <label for="TaskTitle" class="form-label">Task Title</label>
+                            <input type="text" class="form-control" id="TaskTitle" placeholder="Complete this task"
+                                required />
+                        </div>
+                        <div class="mb-3">
+                            <label for="tags" class="form-label">Task Type</label>
+                            <input type="text" class="form-control" id="tags" placeholder="Academic Work....." required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="TaskDiscription" class="form-label">Task Discription</label>
+                            <textarea class="form-control" id="TaskDiscription" rows="5"
+                                placeholder="The Discrption is upon..." required></textarea>
+                        </div>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary" onclick="handleSubmit()">Save changes</button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="ShowTask" tabindex="-1" aria-labelledby="ShowTaskLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="ShowTaskLabel">Task Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body task__modal__body"></div>
+                <div class="modal-footer">
+                    <button stype="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <nav class="navbar navbar-expand-lg bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Tasky</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                </ul>
+                <button type="submit" class="btn btn-primary d-flex align-items-center mr-2" data-bs-toggle="modal"
+                    data-bs-target="#AddNewModal">
+                    <i class="fas fa-plus"></i>Add New
+                </button>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <section class="mt-4">
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <div class="input-group flex-nowrap shadow-lg rounded">
+                        <input type="search" class="form-control" placeholder="Search Your Task.."
+                            aria-label="Search Task" aria-describedby="addon-wrapper" oninput="searchTask.apply(this, arguments)">
+                        <span class="input-group-text" id="addon-wrapper">
+                            <i class="fas fa-search"></i>
+                        </span>
+
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="mt-4">
+            <div class="row task__contents">
+            </div>
+        </section>
+    </div>
+
+    <script src="Script/index.js" async defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

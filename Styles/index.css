@@ -1,0 +1,23 @@
+* {
+  padding: 0px;
+  margin: 0px;
+}
+body {
+  background-color: rgb(212, 226, 237) !important;
+}
+.add__new__btn_only_mobile {
+  padding: 5px;
+  position: fixed;
+  bottom: 0px;
+  right: 0px;
+  padding: 10px 15px;
+  background-color: white;
+  z-index: 3;
+  width: 100%;
+}
+
+/* @media(min-width: 768px){
+    .add__new__btn_only_mobile{
+
+    }
+} */
